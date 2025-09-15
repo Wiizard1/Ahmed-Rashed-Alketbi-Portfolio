@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Contact | Ahmed Rashed Alketbi</title>
+    <link rel="stylesheet" href="../css/style.css">
+  </head>
+  <body>
+    <!--  Navigationn bar  -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html">Ahmed Rashed Alketbi</a>
+        <nav class="main-nav">
+          <a href="../index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="skills.html">Skills</a>
+          <a href="contact.html" class="active">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <!--  Main Content  -->
+    <main class="container">
+      <section class="contact">
+        <h1>Contact Me</h1>
+        <p>If you like to get in touch, please use the form below:</p>
+        <form id="contactForm" class="contact-form">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" required>
+          <br>
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+          <br>
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+          <br>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+        <p id="formMessage" class="form-message"></p>
+      </section>
+    </main>
+    <!--  Footer  -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>2025 | Ahmed Rashed Alketbi</p>
+        <p>📧 <a href="mailto:alketbia77@gmail.com">alketbia77@gmail.com</a></p>
+      </div>
+      <div class="social-box">
+        <h3>Follow Me</h3>
+        <div class="social-icons">
+          <a href="https://www.tiktok.com" target="_blank" aria-label="Tiktok">
+          <img src="../images/icons8-tiktok.svg" alt="Tiktok" class="social-icon">
+          </a>  
+          <a href="https://www.github.com" target="_blank" aria-label="GitHub">
+          <img src="../images/icons8-github.svg" alt="github" class="social-icon">
+          </a>  
+          <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+          <img src="../images/icons8-linkedin.svg" alt="LinkedIn" class="social-icon">
+          </a>
+          <a href="https://www.instagram.com/V5.a0" target="_blank" aria-label="Instagram">
+          <img src="../images/icons8-instagram.svg" alt="Instagram" class="social-icon">
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!--  Scripts  -->
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      //JS Validation
+      const form = document.getElementById('contactForm');
+      const formMessage = document.getElementById('formMessage');
+      
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+      
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+      
+        if (!name || !email || !message) {
+          formMessage.textContent = "Please fill in all required fields.";
+          formMessage.style.color = "red";
+          return;
+        }
+      
+        const emailPattern = /^[^ ]+@[^ ]+\\.[a-z]{2,3}$/;
+        if (!email.match(emailPattern)) {
+          formMessage.textContent = "Please enter a valid email address.";
+          formMessage.style.color = "red";
+          return;
+        }
+      
+        //show success message=
+        formMessage.textContent = "Thank you, " + name + "! Your message has been recorded.";
+        formMessage.style.color = "green";
+      
+        //reset form
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
